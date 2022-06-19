@@ -81,9 +81,15 @@ Here an example of Injection we can do : http://vulnerableproject.test/api/getCu
 
 http://vulnerableproject.test/api/getTodo?customerId=2 OR 1=1 : we get all the customer id
 
+*cors
+
+-> CORS is not configured
+
 
 Here folder which might me interesting to look if you are not familiar with Laravel :
 
 - app/Http/Controllers/AutthentificationController
 
 - routes/api.php
+
+- config/cors.php
