@@ -24,23 +24,25 @@ class AuthentificationController extends Controller
             'birthdate' => $data['birthdate']
         ]);
 
-        // I think we don't need to catch error and return a message in case of issue
+        // I think we don't need to catch error and return a message in case of issue :)
     }
 
     public function getCustomer(Request $request)
     {
 
         $id = $request['id'];
-        $customer = Customers::where('id', $request['id'])->get();
+        $customer = Customers::whereRaw('id = '. $request['id'])->get();
         return [
-            'customer' => $customer
+            'customers' => $customer
         ];
+
+        // If I do something like this, maybe I should use TLS connection
     }
 
 
     public function login(Request $request)
     {
-        $resultEmail = Customers::where('email', $request['email'])->value('password'); // I think it's the best way to check the password :)
+        $resultEmail = Customers::whereRaw('email = "'. $request['email'].'"')->get('password'); // I think it's the best way to check the password :)
         if ($resultEmail == []) {
             return "L'email n'est pas dans la base de données";
         } else {
