@@ -22,7 +22,7 @@ You can start to migrate your database and seed it :
 
 *API
 
-You got 2 URL in POST :
+You got 3 URL in POST :
 
 - http://vulnerableproject.test/api/login
 
@@ -56,13 +56,30 @@ example of the body :
 
 >}
 
-And one URL in GET :
+- http://vulnerableproject.test/api/createTodo
+
+example of the body : 
+> {
+
+>    "email":"monica.walentek@gmail.com",
+
+>    "title":"Site vulnérable",
+
+>    "description":"Faire un site super vulnérable :)"
+
+>}
+
+And two URL in GET :
 
 - http://vulnerableproject.test/api/getCustomer?id=1
+
+- http://vulnerableproject.test/api/getTodo?customerId=2
 
 *Injection
 
 Here an example of Injection we can do : http://vulnerableproject.test/api/getCustomer?id=1 OR 1=1 -> and we get all the id and password we need :)
+
+http://vulnerableproject.test/api/getTodo?customerId=2 OR 1=1 : we get all the customer id
 
 
 Here folder which might me interesting to look if you are not familiar with Laravel :
